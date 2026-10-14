@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prenota un tavolo — PLAZA ANCONA</title>
+<meta name="description" content="Prenota online un tavolo al PLAZA ANCONA: scegli data, orario e numero di persone. Corso Giuseppe Garibaldi 54, Ancona.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/assistant.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2314100e'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Georgia' fill='%23f7f2ea' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<script src="assets/icons.js" defer></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span><b>PLAZA</b><small>Ancona · dal 2022</small></span>
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="eventi.html" data-i18n="nav.events">Eventi</a></li>
+      <li><a href="sport.html" data-i18n="nav.sport">Sport</a></li>
+      <li><a href="prenota.html" class="active" data-i18n="nav.book">Prenota un tavolo</a></li>
+      <li><a href="contact.html">Contatti</a></li>
+    
+          <li class="m-cta"><a class="nav-cta-mobile" href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a></li>
+    </ul>
+    <div class="nav-right">
+            <a class="nav-cta" href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a>
+          <span class="lang-switch">
+        <button type="button" data-lang="it" class="on">IT</button>
+        <button type="button" data-lang="en">EN</button>
+      </span>
+</div>
+    <button class="burger" aria-label="Apri menu" aria-expanded="false"><span class="burger-label" data-i18n="nav.books">Prenota</span><span class="burger-icon" data-icon="menu"></span></button>
+  </div>
+</header>
+<div class="nav-backdrop" aria-hidden="true"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker" data-i18n="book.kicker">Prenotazioni online</span>
+    <h1 data-i18n="book.title">Prenota il<br>tuo tavolo.</h1>
+    <p data-i18n="book.lede">Scegli data, orario e numero di persone: ti confermiamo la prenotazione al più presto. Per gruppi numerosi ed eventi, aggiungi una nota o chiamaci.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap info-grid">
+    <div class="reveal">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="kicker" data-i18n="book.form.kicker">La tua richiesta</span>
+        <h2 data-i18n="book.form.title">Quanti siete?</h2>
+        <p data-i18n="book.form.sub">Compila tutti i campi obbligatori e invia: pensiamo noi al resto.</p>
+      </div>
+      <form class="contact-form" id="bookingForm" novalidate>
+        <div class="row2">
+          <label><span data-i18n="book.f.date">Data</span>
+            <input type="date" name="data" required>
+          </label>
+          <label><span data-i18n="book.f.time">Orario</span>
+            <select name="orario" required>
+              <option value="">—</option>
+              <option>06:30</option>
+              <option>07:00</option>
+              <option>07:30</option>
+              <option>08:00</option>
+              <option>08:30</option>
+              <option>09:00</option>
+              <option>09:30</option>
+              <option>10:00</option>
+              <option>11:00</option>
+              <option>12:00</option>
+              <option>12:30</option>
+              <option>13:00</option>
+              <option data-i18n="book.opt.lunch">13:30 — Pranzo</option>
+              <option>14:00</option>
+              <option>15:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>18:30</option>
+              <option data-i18n="book.opt.dinner">19:00 — Cena</option>
+              <option>19:30</option>
+              <option>20:00</option>
+              <option>20:30</option>
+              <option>21:00</option>
+              <option>21:30</option>
+              <option>22:00</option>
+            </select>
+          </label>
+        </div>
+        <label><span data-i18n="book.f.people">Numero di persone</span>
+          <select name="persone" required>
+            <option value="">—</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10+</option>
+          </select>
+        </label>
+        <div class="table-pick" id="tablePick">
+          <div class="tp-head"><span data-i18n="book.f.zone">Scegli la zona</span> <span class="tp-hint" data-i18n="book.f.zone.hint">(assegniamo noi il tavolo)</span></div>
+          <div class="tp-grid" id="zoneGrid">
+            <p class="tp-loading" data-i18n="book.f.zone.loading">Verifico la disponibilità…</p>
+          </div>
+          <input type="hidden" name="zona" id="zoneInput">
+        </div>
+        <div class="row2">
+          <label><span data-i18n="book.f.name">Nome</span>
+            <input type="text" name="nome" required data-i18n-ph="book.f.name.ph" placeholder="Il tuo nome">
+          </label>
+          <label><span data-i18n="book.f.tel">Telefono</span>
+            <input type="tel" name="telefono" required data-i18n-ph="book.f.tel.ph" placeholder="Es. 333 1234567">
+          </label>
+        </div>
+        <label><span data-i18n="book.f.email">Email</span>
+          <input type="email" name="email" required data-i18n-ph="book.f.email.ph" placeholder="nome@email.it">
+        </label>
+        <label><span data-i18n="book.f.notes">Note</span>
+          <textarea name="note" rows="4" data-i18n-ph="book.f.notes.ph" placeholder="Allergie, seggiolone, tavolo all'aperto..."></textarea>
+        </label>
+        <button class="submit" type="submit" data-i18n="book.f.send">Prenota il tavolo</button>
+        <div class="form-status" id="bookingStatus"></div>
+        <div id="bookingSaved"></div>
+        <p class="note" data-i18n="book.privacy">I tuoi dati vengono usati solo per gestire la prenotazione.</p>
+      </form>
+    </div>
+
+    <div class="reveal">
+      <div class="section-head" style="margin-bottom:18px">
+        <span class="kicker" data-i18n="book.side.kicker">Buono a sapersi</span>
+        <h2 data-i18n="book.side.title">Come funziona.</h2>
+      </div>
+      <div class="contact-line"><span data-icon="calendar"></span> <span data-i18n="book.side.step1">Scegli data e orario tra quelli disponibili.</span></div>
+      <div class="contact-line"><span data-icon="users"></span> <span data-i18n="book.side.step2">Indica quante persone verranno con te.</span></div>
+      <div class="contact-line"><span data-icon="check"></span> <span data-i18n="book.side.step3">Riceviamo la richiesta e ti confermiamo il tavolo.</span></div>
+      <div style="margin:22px 0 10px">
+        <span class="pill-open"><span class="dot"></span><span data-i18n="info.open">Aperto ora</span></span>
+      </div>
+      <ul class="hours-list hours-invert" style="margin-top:14px">
+        <li><span class="day">Lun – Ven</span><span>06:30 – 22:00</span></li>
+        <li><span class="day">Sab – Dom</span><span>07:00 – 22:00</span></li>
+      </ul>
+      <div class="btns" style="margin-top:24px">
+        <a class="btn solid" href="tel:+393240838518" data-i18n="book.side.call"><span data-icon="phone"></span> Preferisci chiamare?</a>
+      </div>
+      <div style="margin-top:20px">
+        <div class="contact-line"><span data-icon="map-pin"></span> <span data-i18n="info.addr">Corso Giuseppe Garibaldi, 54 — 60122 Ancona (AN)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2 data-i18n="book.cta.title">Gruppi ed eventi?</h2>
+    <p data-i18n="book.cta.sub">Per compleanni, squadre e gruppi numerosi scrivici dal modulo contatti: organizziamo l'angolo giusto per voi.</p>
+    <a class="btn solid" href="contact.html" data-i18n="book.cta.btn">Contattaci</a>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span><b style="color:var(--cream)">PLAZA</b><small style="color:rgba(247,242,234,.6)">Ancona</small></span>
+        </div>
+        <p style="font-size:14.5px;max-width:320px" data-i18n="foot.about">Bar, caffetteria e pizzeria in Corso Garibaldi 54. Il posto giusto per una pausa, dal mattino alla sera.</p>
+              <div class="social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Plaza+Ancona" aria-label="Google Maps">◉</a>
+        </div>
+</div>
+      <div>
+        <h4 data-i18n="foot.explore">Esplora</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="eventi.html" data-i18n="nav.events">Eventi</a></li>
+      <li><a href="sport.html" data-i18n="nav.sport">Sport</a></li>
+          <li><a href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a></li>
+          <li><a href="contact.html">Contatti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.contact">Contatti</h4>
+        <ul>
+          <li>Corso Giuseppe Garibaldi, 54</li>
+          <li>60122 Ancona (AN)</li>
+          <li><a href="tel:+393240838518">324 083 8518</a></li>
+          <li data-i18n="foot.hours">Aperto 7/7 · 06:30–22:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year></span> PLAZA ANCONA · PLAZA Srl · P.IVA —</span>
+      <span class="foot-credit" data-i18n="foot.credit">Developed by Deucelenon</span>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="assets/site.js"></script>
+<script src="assets/i18n.js"></script>
+<script>
+// Booking form -> LifeOS ntfy notification on submit (never silent)
+(function(){
+  function ICO(name){ return (window.ICONS && window.ICONS[name]) || ''; }
+  function ESC(s){ return String(s||'').replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];}); }
+  var form = document.getElementById('bookingForm');
+  var status = document.getElementById('bookingStatus');
+  if(!form) return;
+  // Post JSON to the ROOT endpoint so ntfy parses topic/title/message/tags and
+  // renders a clean notification. Posting to https://ntfy.sh/<topic> instead
+  // makes ntfy echo the raw JSON body verbatim (that was the bug).
+  var ENDPOINT = 'https://ntfy.sh/';
+  function recordInbox(fields){
+    // store the booking on the site server so the admin can show it; the server
+    // auto-assigns tables from the chosen zone and rejects a full zone.
+    return fetch('api/inbox/add', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({kind: 'booking', fields: fields})
+    }).then(function(r){
+      return r.json().catch(function(){ return {ok:false}; }).then(function(j){
+        if(!r.ok || !j.ok) throw new Error(j && j.message ? j.message : (j && j.error ? j.error : 'HTTP '+r.status));
+        return j;
+      });
+    });
+  }
+  function sendBooking(payload){
+    return fetch(ENDPOINT, {
+      method: 'POST',
+      // text goes in the JSON body, never an HTTP header (headers are latin-1)
+      body: JSON.stringify(payload)
+    });
+  }
+
+  /* ---- saved booking: keep the guest's confirmation on this device ----
+     Mirrors the order ticket ('plaza-ticket'). Shows a small card with the
+     booking details after a refresh or on return; cleared when the booking
+     date is in the past (so a stale one never lingers). */
+  function savedBooking(){
+    try {
+      var raw = localStorage.getItem('plaza-booking');
+      if(!raw) return null;
+      var b = JSON.parse(raw);
+      if(!b || !b.at) { localStorage.removeItem('plaza-booking'); return null; }
+      // Drop it once the booked date has passed.
+      if(b.data){
+        var d = new Date(b.data + 'T23:59:59');
+        if(!isNaN(d.getTime()) && Date.now() > d.getTime()){
+          localStorage.removeItem('plaza-booking');
+          return null;
+        }
+      }
+      return b;
+    } catch(e){ return null; }
+  }
+
+  function renderBookingPill(){
+    var host = document.getElementById('bookingSaved');
+    if(!host) return;
+    var b = savedBooking();
+    if(!b){ host.innerHTML = ''; return; }
+    var parts = [];
+    if(b.data) parts.push(ESC(b.data));
+    if(b.orario) parts.push(ESC(b.orario));
+    if(b.persone) parts.push(ESC(b.persone) + ' ' + (lang()==='en' ? 'people' : 'persone'));
+    if(b.zona) parts.push(ESC(b.zona));
+    var title = lang()==='en' ? 'Your booking request' : 'La tua prenotazione';
+    var note = lang()==='en' ? 'We confirm by phone shortly. Call us for changes.' : 'Ti confermiamo il tavolo a breve. Per modifiche, chiamaci.';
+    host.innerHTML =
+      '<div class="booking-saved">' +
+        ICO('check') + '<div><b>' + title + '</b>' +
+        '<span>' + parts.join(' · ') + '</span>' +
+        '<small>' + note + '</small></div>' +
+        '<button type="button" id="bookingForget" aria-label="' + (lang()==='en'?'Dismiss':'Chiudi') + '">×</button>' +
+      '</div>';
+    var btn = document.getElementById('bookingForget');
+    if(btn) btn.addEventListener('click', function(){
+      try { localStorage.removeItem('plaza-booking'); } catch(e){}
+      renderBookingPill();
+    });
+  }
+
+  function lang(){ return (document.documentElement.lang === 'en') ? 'en' : 'it'; }
+
+  // Show any saved booking on load, and keep it across language switches.
+  renderBookingPill();
+  document.addEventListener('plaza:lang', renderBookingPill);
+
+  /* ---- zone picker: guest chooses a ZONE (Primo piano / Fuori); we assign
+     the table automatically. A zone with no free seats for that date+slot is
+     shown disabled and cannot be booked. ---- */
+  var zoneGrid = document.getElementById('zoneGrid');
+  var zoneInput = document.getElementById('zoneInput');
+  var dateInput = form.querySelector('[name=data]');
+  var orarioInput = form.querySelector('[name=orario]');
+  var personeInput = form.querySelector('[name=persone]');
+  function escHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];}); }
+  function mEn(){ return (document.documentElement.lang === 'en'); }
+  function zoneName(z){ return mEn() ? (z.enName||z.itName||z.id) : (z.itName||z.id); }
+  function needSeats(){ var n=parseInt((personeInput&&personeInput.value)||'0',10); return isNaN(n)?0:n; }
+  function selectZone(id, btn){
+    zoneInput.value = id;
+    if(zoneGrid) zoneGrid.querySelectorAll('.tp-table').forEach(function(b){ b.classList.remove('is-selected'); });
+    if(btn) btn.classList.add('is-selected');
+  }
+  function renderZones(zones){
+    if(!zoneGrid) return;
+    var need = needSeats();
+    zoneGrid.innerHTML = (zones||[]).map(function(z){
+      var enough = (need<=0) ? z.freeSeats>0 : z.freeSeats>=need;
+      var free = z.free && z.freeSeats>0 && enough;
+      var seatsTxt = z.freeSeats + ' ' + (z.freeSeats===1?'posto':'posti');
+      if(free){
+        return '<button type="button" class="tp-table" data-zid="'+escHtml(z.id)+'">'+
+          escHtml(zoneName(z))+'<span class="tp-seats">'+escHtml(seatsTxt)+'</span></button>';
+      }
+      var why = (!z.freeSeats) ? (mEn()?'full':'completa') : (mEn()?'not enough seats':'posti insufficienti');
+      return '<button type="button" class="tp-table is-reserved" disabled title="'+escHtml(why)+'">'+
+        escHtml(zoneName(z))+'<span class="tp-seats">'+escHtml(seatsTxt)+'</span>'+
+        '<span class="tp-reserved-tag">'+escHtml(why)+'</span></button>';
+    }).join('');
+    zoneGrid.querySelectorAll('.tp-table[data-zid]').forEach(function(b){
+      b.addEventListener('click', function(){ selectZone(b.getAttribute('data-zid'), b); });
+    });
+    /* keep selection if that zone is still bookable for the current need */
+    if(zoneInput.value){
+      var cur = zoneGrid.querySelector('.tp-table[data-zid="'+zoneInput.value+'"]');
+      if(cur) cur.classList.add('is-selected'); else zoneInput.value='';
+    }
+  }
+  function loadZones(){
+    if(!zoneGrid) return;
+    zoneGrid.innerHTML = '<p class="tp-loading" data-i18n="book.f.zone.loading">Verifico la disponibilità…</p>';
+    var qs = '?date=' + encodeURIComponent(dateInput && dateInput.value || '') +
+             '&slot=' + encodeURIComponent(orarioInput && orarioInput.value || '');
+    fetch('api/tables/plan' + qs, {cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ renderZones((j && j.zones) || []); })
+      .catch(function(){ zoneGrid.innerHTML = '<p class="tp-loading">Disponibilità non al momento — scrivi la tua richiesta e ti confermiamo noi.</p>'; });
+  }
+  if(dateInput) dateInput.addEventListener('change', loadZones);
+  if(orarioInput) orarioInput.addEventListener('change', loadZones);
+  if(personeInput) personeInput.addEventListener('change', loadZones);
+  document.addEventListener('plaza:lang', function(){ loadZones(); });
+  loadZones();
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    var d = Object.fromEntries(new FormData(form).entries());
+    // Clean, human notification: just who, when, how many.
+    var when = (d.data || '') + (d.orario ? ' alle ' + d.orario : '');
+    var payload = {
+      topic: 'LifeOS',
+      title: 'PLAZA — nuova prenotazione',
+      tags: ['calendar', 'bell'],
+      priority: 4,
+      click: 'tel:+393240838518',
+      message: (d.nome || 'Cliente') + ' · ' + (d.persone || '?') + ' persone\n' + when
+    };
+    status.className = 'form-status';
+    status.textContent = 'Invio in corso...';
+    var bookingFields = {
+      data: d.data || '', orario: d.orario || '', persone: d.persone || '',
+      zona: d.zona || '',
+      nome: d.nome || '', telefono: d.telefono || '', email: d.email || '', note: d.note || ''
+    };
+    // Save the booking first: the server assigns tables from the zone and
+    // rejects a zone that has no seats left for that date+slot.
+    recordInbox(bookingFields)
+      .then(function(){
+        // one retry so a transient hiccup never swallows a booking
+        return sendBooking(payload)
+          .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r; })
+          .catch(function(){ return sendBooking(payload).then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r; }); });
+      })
+      .then(function(){
+        status.className = 'form-status ok';
+        status.innerHTML = ICO('check')+' Grazie! Prenotazione inviata: ti confermiamo il tavolo a breve.';
+        // Persist the booking on this device so the guest keeps a confirmation
+        // after a refresh or after leaving the page - same idea as the order
+        // ticket. Cleared once the booking date has passed.
+        try {
+          localStorage.setItem('plaza-booking', JSON.stringify({
+            at: Date.now(),
+            data: bookingFields.data, orario: bookingFields.orario,
+            persone: bookingFields.persone, zona: bookingFields.zona,
+            nome: bookingFields.nome, tavolo: bookingFields.tavolo || ''
+          }));
+        } catch(e){}
+        form.reset();
+        if(zoneInput) zoneInput.value = '';
+        loadZones();
+        renderBookingPill();
+      })
+      .catch(function(err){
+        status.className = 'form-status err';
+        status.innerHTML = ICO('warning')+' '+ESC(err.message || 'Invio non riuscito.')+' Puoi chiamarci al 324 083 8518.';
+      });
+  });
+})();
+</script>
+<script src="assets/assistant.js" defer></script>
+<script src="assets/order-cta.js" defer></script>
+</body>
+</html>

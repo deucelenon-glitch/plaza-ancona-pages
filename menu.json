@@ -1,0 +1,18 @@
+{
+ "categories": [
+  {
+   "id": "c1",
+   "itName": "Menu",
+   "tag": "sample",
+   "icon": "coffee",
+   "items": [
+    {
+     "i18n": "menu.i.sample",
+     "it": "Esempio",
+     "en": "Sample item",
+     "price": "€ 0,00"
+    }
+   ]
+  }
+ ]
+}

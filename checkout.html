@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — PLAZA ANCONA</title>
+<meta name="description" content="Rivedi il tuo ordine e conferma: ricevi un ticket con il numero d'ordine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/assistant.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2314100e'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Georgia' fill='%23f7f2ea' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<script src="assets/icons.js" defer></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span><b>PLAZA</b><small>Ancona · dal 2022</small></span>
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="eventi.html" data-i18n="nav.events">Eventi</a></li>
+      <li><a href="sport.html" data-i18n="nav.sport">Sport</a></li>
+      <li><a href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a></li>
+      <li><a href="contact.html">Contatti</a></li>
+          <li class="m-cta"><a class="nav-cta-mobile" href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a></li>
+    </ul>
+    <div class="nav-right">
+            <a class="nav-cta" href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a>
+          <span class="lang-switch">
+        <button type="button" data-lang="it" class="on">IT</button>
+        <button type="button" data-lang="en">EN</button>
+      </span>
+</div>
+    <button class="burger" aria-label="Apri menu" aria-expanded="false"><span class="burger-label" data-i18n="nav.menu">Menu</span><span class="burger-icon" data-icon="menu"></span></button>
+  </div>
+</header>
+
+<main class="wrap checkout">
+  <!-- Step 1: review -->
+  <section id="coReview">
+    <h1 data-i18n="checkout.title">Rivedi il tuo ordine</h1>
+    <p class="muted" data-i18n="checkout.lead">Controlla gli articoli e conferma per ricevere il ticket con il numero d'ordine.</p>
+
+    <div class="co-card">
+      <div class="co-lines" id="coLines"></div>
+      <div class="co-total"><span data-i18n="order.total">Totale</span><span id="coTotal">€ 0,00</span></div>
+    </div>
+
+    <div class="co-actions">
+      <a class="co-back" href="menu.html" data-i18n="checkout.back">← Torna al menu</a>
+      <button class="co-confirm" id="coConfirm" type="button" data-i18n="checkout.confirm">Conferma ordine</button>
+    </div>
+    <p class="co-empty" id="coEmpty" hidden data-i18n="checkout.empty">Il tuo ordine è vuoto. Torna al menu per aggiungere articoli.</p>
+  </section>
+
+  <!-- Step 2: ticket -->
+  <section id="coTicket" hidden>
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="ticket-brand">PLAZA</span>
+        <span class="ticket-label" data-i18n="ticket.label">Il tuo ordine</span>
+      </div>
+      <div class="ticket-number">
+        <span class="ticket-hash">#</span><span id="tkNumber">----</span>
+      </div>
+      <div class="ticket-sub" data-i18n="ticket.show">Mostra questo numero al banco</div>
+      <div class="ticket-lines" id="tkLines"></div>
+      <div class="ticket-total"><span data-i18n="order.total">Totale</span><span id="tkTotal">€ 0,00</span></div>
+      <div class="ticket-time" id="tkTime"></div>
+      <div class="ticket-foot" data-i18n="ticket.thanks">Grazie! Ti chiamiamo con il tuo numero.</div>
+    </div>
+    <div class="co-actions">
+      <a class="co-back" href="menu.html" data-i18n="ticket.again">Ordina ancora</a>
+      <button class="co-confirm" id="tkPrint" type="button" data-i18n="ticket.print">Salva / stampa</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand" href="index.html"><span><b>PLAZA</b><small>Ancona · dal 2022</small></span></a>
+    </div>
+    <div>
+      <h4 data-i18n="foot.contact">Contatti</h4>
+      <ul>
+        <li>Corso Giuseppe Garibaldi, 54</li>
+        <li>60122 Ancona (AN)</li>
+        <li><a href="tel:+393240838518">324 083 8518</a></li>
+        <li data-i18n="foot.hours">Aperto 7/7 · 06:30–22:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© <span data-year></span> PLAZA ANCONA · PLAZA Srl · P.IVA —</span>
+    <span class="foot-credit" data-i18n="foot.credit">Developed by Deucelenon</span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/assistant.js" defer></script>
+<script>
+/* Checkout: read the basket from the menu page, confirm, show a ticket. */
+(function(){
+  var CART_KEY = 'plaza-cart';
+  var TICKET_KEY = 'plaza-ticket';
+  var TICKET_TTL_MS = 3 * 60 * 60 * 1000; /* keep the ticket on the device 3h */
+  var fmt = function(n){ return '€ ' + Number(n).toFixed(2).replace('.', ','); };
+  /* resolve name/detail in the CURRENT language from stored i18n keys */
+  function nameFor(l){
+    if(l.nameKey && window.plazaT){ var t = window.plazaT(l.nameKey); if(t) return t; }
+    return l.name || '—';
+  }
+  function detailFor(l){
+    if(l.detailKey && window.plazaT){ var t = window.plazaT(l.detailKey); if(t) return t; }
+    return l.detail || '';
+  }
+  var cart = [];
+  try { cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]') || []; } catch(e){ cart = []; }
+  if(!Array.isArray(cart)) cart = [];
+
+  var linesEl = document.getElementById('coLines');
+  var totalEl = document.getElementById('coTotal');
+  var emptyEl = document.getElementById('coEmpty');
+  var confirmBtn = document.getElementById('coConfirm');
+  var reviewSec = document.getElementById('coReview');
+  var ticketSec = document.getElementById('coTicket');
+
+  var total = cart.reduce(function(s,l){ return s + (Number(l.price)||0) * (Number(l.qty)||1); }, 0);
+
+  function renderReview(){
+    if(cart.length === 0){
+      if(linesEl) linesEl.innerHTML = '';
+      if(totalEl) totalEl.textContent = fmt(0);
+      if(emptyEl) emptyEl.hidden = false;
+      if(confirmBtn) confirmBtn.disabled = true;
+      return;
+    }
+    if(totalEl) totalEl.textContent = fmt(total);
+    linesEl.innerHTML = cart.map(function(l){
+      var det = detailFor(l) ? ' <span class="co-det">· '+detailFor(l)+'</span>' : '';
+      var sum = (Number(l.price)||0) * (Number(l.qty)||1);
+      return '<div class="co-line"><span class="co-name"><span class="co-qty">'+l.qty+'×</span>'+nameFor(l)+det+'</span>'
+           + '<span class="co-price">'+fmt(sum)+'</span></div>';
+    }).join('');
+  }
+  renderReview();
+
+  /* If a ticket was saved on this device (< 3h old) and there's no active
+     basket to confirm, show that ticket again instead of an empty page. */
+  try {
+    if(cart.length === 0){
+      var saved = loadTicket();
+      if(saved && saved.items && saved.items.length){
+        showTicket(saved.number, saved.items, saved.total, saved.at);
+      }
+    }
+  } catch(e){}
+
+  function showTicket(number, items, tot, when){
+    reviewSec.hidden = true;
+    ticketSec.hidden = false;
+    document.getElementById('tkNumber').textContent = String(number).padStart ? String(number).padStart(3,'0') : number;
+    document.getElementById('tkTotal').textContent = fmt(tot);
+    var t = when ? new Date(when) : new Date();
+    if(isNaN(t.getTime())) t = new Date();
+    var pad = function(n){ return String(n).length<2 ? '0'+n : String(n); };
+    document.getElementById('tkTime').textContent = pad(t.getDate())+'/'+pad(t.getMonth()+1)+'/'+t.getFullYear()+' '+pad(t.getHours())+':'+pad(t.getMinutes());
+    document.getElementById('tkLines').innerHTML = items.map(function(l){
+      return '<div class="tk-line"><span>'+l.qty+'× '+nameFor(l)+'</span><span>'+fmt((Number(l.price)||0)*(Number(l.qty)||1))+'</span></div>';
+    }).join('');
+    try { localStorage.removeItem(CART_KEY); } catch(e){}
+    saveTicket(number, items, tot);
+  }
+  function saveTicket(number, items, tot){
+    try {
+      localStorage.setItem(TICKET_KEY, JSON.stringify({
+        number: number, items: items, total: tot, at: Date.now()
+      }));
+    } catch(e){}
+  }
+  function loadTicket(){
+    try {
+      var raw = localStorage.getItem(TICKET_KEY);
+      if(!raw) return null;
+      var d = JSON.parse(raw);
+      if(!d || !d.at || (Date.now() - d.at) > TICKET_TTL_MS){
+        localStorage.removeItem(TICKET_KEY);
+        return null;
+      }
+      return d;
+    } catch(e){ return null; }
+  }
+
+  function fallbackTicket(){
+    // If the API is unreachable, still hand over a ticket so the customer isn't stranded.
+    var local = 'E' + String(Date.now()).slice(-3);
+    showTicket(local, cart, total);
+  }
+
+  if(confirmBtn) confirmBtn.addEventListener('click', function(){
+    if(cart.length === 0) return;
+    confirmBtn.disabled = true;
+    var payload = { items: cart.map(function(l){ return { name: nameFor(l), qty: l.qty, price: l.price }; }) };
+    fetch('/api/orders/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).then(function(d){
+      if(d && d.ok && d.number){ showTicket(d.number, cart, total); }
+      else { fallbackTicket(); }
+    }).catch(function(){ fallbackTicket(); });
+  });
+
+  var printBtn = document.getElementById('tkPrint');
+  if(printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* Re-render names when the site language changes. */
+  document.addEventListener('plaza:lang', function(){ renderReview(); });
+
+  /* Defensive fallback: if i18n.js failed to bind the IT/EN buttons (e.g. a stale
+     cached script), bind a self-contained toggle that also translates static
+     [data-i18n] labels so language switching always works. */
+  document.querySelectorAll('[data-lang]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang');
+      if(window.plazaT) return; /* i18n.js handle() already does a full apply() */
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-lang]').forEach(function(x){ x.classList.toggle('on', x === b); });
+      try { localStorage.setItem('plaza-lang', lang); } catch(e){}
+      /* translate static labels from the embedded dictionary if present */
+      var dict = (window.PLAZA_I18N && window.PLAZA_I18N[lang]) || null;
+      if(dict){
+        document.querySelectorAll('[data-i18n]').forEach(function(el){
+          var k = el.getAttribute('data-i18n');
+          if(dict[k] !== undefined) el.innerHTML = dict[k];
+        });
+      }
+      document.dispatchEvent(new CustomEvent('plaza:lang', { detail: { lang: lang } }));
+    });
+  });
+})();
+</script>
+<script src="assets/order-cta.js" defer></script>
+</body>
+</html>

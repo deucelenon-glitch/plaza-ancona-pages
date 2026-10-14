@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sport in TV — PLAZA ANCONA</title>
+<meta name="description" content="Le partite e i grandi eventi sportivi in onda sugli schermi del PLAZA ANCONA. Calendario aggiornato dal locale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/assistant.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2314100e'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Georgia' fill='%23f7f2ea' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<style>
+  .games-list{display:flex;flex-direction:column;gap:14px;margin-top:34px}
+  .game-row{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease}
+  .game-row:hover{transform:translateY(-2px);box-shadow:0 22px 46px -26px rgba(20,16,14,.45)}
+  .game-when{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:74px;text-align:center}
+  .game-when .d{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--wood-deep)}
+  .game-when .t{font-family:"Fraunces",Georgia,serif;font-size:1.5rem;font-weight:600;line-height:1.1}
+  .game-main{min-width:0}
+  .game-teams{font-family:"Fraunces",Georgia,serif;font-size:1.2rem;font-weight:600;letter-spacing:-.01em;margin:0 0 4px}
+  .game-teams .vs{color:var(--wood);font-weight:400;margin:0 8px}
+  .game-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--ink-soft)}
+  .game-chip{display:inline-flex;align-items:center;gap:5px;background:var(--sand);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-weight:600;color:var(--wood-deep)}
+  .game-chan{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--ink);white-space:nowrap}
+  .games-empty{padding:60px 0;text-align:center;color:var(--ink-soft)}
+  .games-empty .big{font-size:40px;display:block;margin-bottom:14px;opacity:.5}
+  @media(max-width:560px){.game-row{grid-template-columns:auto 1fr;gap:12px}.game-chan{grid-column:2;justify-content:flex-start}}
+</style>
+<script src="assets/icons.js" defer></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span><b>PLAZA</b><small>Ancona · dal 2022</small></span>
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="eventi.html" data-i18n="nav.events">Eventi</a></li>
+      <li><a href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a></li>
+      <li><a href="contact.html">Contatti</a></li>
+      <li class="m-cta"><a class="nav-cta-mobile" href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cta" href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a>
+      <span class="lang-switch">
+        <button type="button" data-lang="it" class="on">IT</button>
+        <button type="button" data-lang="en">EN</button>
+      </span>
+    </div>
+    <button class="burger" aria-label="Apri menu" aria-expanded="false"><span class="burger-label" data-i18n="nav.sport">Sport</span><span class="burger-icon" data-icon="menu"></span></button>
+  </div>
+</header>
+<div class="nav-backdrop" aria-hidden="true"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker" data-i18n="sport.kicker">Sugli schermi del locale</span>
+    <h1 data-i18n="sport.title">Sport in TV.</h1>
+    <p data-i18n="sport.lede">Le partite e i grandi eventi che trasmettiamo. Prenota il tuo angolo, ordina un giro e tifa con noi.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div id="gamesWrap">
+      <div class="games-empty"><span class="big" data-icon="tv"></span><span data-i18n="sport.loading">Caricamento calendario…</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 data-i18n="sport.cta.title">Vuoi vedere una partita da noi?</h2>
+    <p data-i18n="sport.cta.sub">Prenota un tavolo per la serata della partita, o chiedici se mettiamo in onda il tuo match.</p>
+    <a class="btn solid" href="prenota.html" data-i18n="sport.cta.btn">Prenota un tavolo</a>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span><b style="color:var(--cream)">PLAZA</b><small style="color:rgba(247,242,234,.6)">Ancona</small></span>
+        </div>
+        <p style="font-size:14.5px;max-width:320px" data-i18n="foot.about">Bar, caffetteria e pizzeria in Corso Garibaldi 54. Il posto giusto per una pausa, dal mattino alla sera.</p>
+        <div class="social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Plaza+Ancona" aria-label="Google Maps">◉</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot.explore">Esplora</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="eventi.html" data-i18n="nav.events">Eventi</a></li>
+          <li><a href="prenota.html" data-i18n="nav.book">Prenota un tavolo</a></li>
+          <li><a href="contact.html">Contatti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.contact">Contatti</h4>
+        <ul>
+          <li>Corso Giuseppe Garibaldi, 54</li>
+          <li>60122 Ancona (AN)</li>
+          <li><a href="tel:+393240838518">324 083 8518</a></li>
+          <li data-i18n="foot.hours">Aperto 7/7 · 06:30–22:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year></span> PLAZA ANCONA · PLAZA Srl · P.IVA —</span>
+      <span class="foot-credit" data-i18n="foot.credit">Developed by Deucelenon</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/i18n.js"></script>
+<script>
+/* Sport in TV: reads the fixtures feed managed by the PLAZA admin. */
+(function(){
+  var wrap = document.getElementById('gamesWrap');
+  if(!wrap) return;
+  var FEED = 'api/games/get';
+  var MONTHS_IT = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
+  var MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var DAYS_IT = ['dom','lun','mar','mer','gio','ven','sab'];
+  var DAYS_EN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function esc(s){return (s||'').replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];});}
+  function ICO(name){ return (window.ICONS && window.ICONS[name]) || ''; }
+  function lang(){ return (document.documentElement.lang === 'en') ? 'en' : 'it'; }
+
+  function parts(iso){
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+    if(!m) return null;
+    var months = (lang()==='en') ? MONTHS_EN : MONTHS_IT;
+    var days = (lang()==='en') ? DAYS_EN : DAYS_IT;
+    var d = new Date(parseInt(m[1],10), parseInt(m[2],10)-1, parseInt(m[3],10));
+    return { day: parseInt(m[3],10), mon: months[parseInt(m[2],10)-1], year: m[1], wd: days[d.getDay()] };
+  }
+  function sortKey(g){ return (g.date || '9999-99-99') + ' ' + (g.time || '99:99'); }
+
+  function render(games){
+    games = (games || []).slice().sort(function(a,b){ return sortKey(a) < sortKey(b) ? -1 : 1; });
+    if(!games.length){
+      wrap.innerHTML = '<div class="games-empty"><span class="big">'+ICO('tv')+'</span>'+
+        '<span data-i18n="sport.none">Nessuna partita in programma al momento. Torna presto!</span></div>';
+      if(window.applyI18n) window.applyI18n();
+      return;
+    }
+    var html = '<div class="games-list">';
+    games.forEach(function(g){
+      var p = parts(g.date);
+      var when = p
+        ? '<span class="d">'+esc(p.wd)+' '+p.day+' '+esc(p.mon)+'</span><span class="t">'+esc(g.time||'')+'</span>'
+        : '<span class="t">'+esc(g.time||'')+'</span>';
+      var teams = esc(g.home||'') + (g.home && g.away ? '<span class="vs">vs</span>' : '') + esc(g.away||'');
+      var meta = '';
+      if(g.sport) meta += '<span class="game-chip">'+ICO('tv')+' '+esc(g.sport)+'</span>';
+      if(g.competition) meta += '<span class="game-chip">'+esc(g.competition)+'</span>';
+      var chan = g.channel ? '<span class="game-chan">'+ICO('tv')+' '+esc(g.channel)+'</span>' : '';
+      html += '<article class="game-row">'+
+        '<div class="game-when">'+when+'</div>'+
+        '<div class="game-main"><h3 class="game-teams">'+teams+'</h3>'+
+        '<div class="game-meta">'+meta+'</div></div>'+
+        chan+
+        '</article>';
+    });
+    html += '</div>';
+    wrap.innerHTML = html;
+  }
+
+  fetch(FEED, {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(j){ render(j.games||[]); })
+    .catch(function(){ render([]); });
+})();
+</script>
+<script src="assets/assistant.js" defer></script>
+<script src="assets/order-cta.js" defer></script>
+</body>
+</html>

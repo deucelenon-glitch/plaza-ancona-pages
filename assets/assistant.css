@@ -1,0 +1,131 @@
+/* Plaza Ancona — prenota page + AI assistant widget
+   (appended for the AI-assistant package) */
+
+/* ---------- prenota page steps ---------- */
+.steps{display:grid;gap:20px;margin-top:6px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step .n{
+  flex:none;width:38px;height:38px;border-radius:50%;
+  background:var(--ink);color:var(--cream);display:grid;place-items:center;
+  font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:17px;
+}
+.step h3{font-family:"Fraunces",Georgia,serif;margin:2px 0 4px;font-size:1.08rem;font-weight:600}
+.step p{margin:0;color:var(--ink-soft);font-size:14.5px}
+input[type="date"],input[type="time"]{min-height:47px}
+
+@media(max-width:640px){
+  }
+
+/* ---------- AI assistant widget ---------- */
+/* Anchor to the visual viewport. The explicit left:auto + max box avoids
+   clipping when a transformed ancestor (e.g. a lingering body animation)
+   becomes the containing block for position:fixed. */
+.ai-fab{
+  position:fixed;left:auto;right:22px;bottom:22px;z-index:70;
+  width:62px;height:62px;max-width:calc(100vw - 24px);border-radius:50%;border:0;cursor:pointer;
+  box-sizing:border-box;
+  background:linear-gradient(145deg,var(--wood),var(--wood-deep));
+  color:#fff;box-shadow:0 18px 40px -14px rgba(122,79,44,.85);
+  display:grid;place-items:center;transition:transform .2s,box-shadow .2s;
+}
+.ai-fab:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 24px 48px -14px rgba(122,79,44,.95)}
+.ai-fab svg{width:30px;height:30px;display:block}
+.ai-fab .ai-fab-close{display:none}
+.ai-fab.open .ai-fab-open{display:none}
+.ai-fab.open .ai-fab-close{display:block}
+.ai-fab .ai-dot{
+  position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;
+  background:#bff39a;border:2px solid var(--cream);
+}
+.ai-fab.open .ai-dot{display:none}
+
+.ai-panel{
+  position:fixed;left:auto;right:22px;bottom:96px;z-index:69;box-sizing:border-box;
+  width:min(378px,calc(100vw - 32px));
+  max-height:min(620px,calc(100vh - 130px));
+  background:var(--cream);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:0 30px 70px -24px rgba(20,16,14,.6);
+  display:flex;flex-direction:column;
+  transform:translateY(16px) scale(.98);opacity:0;pointer-events:none;
+  transition:transform .24s cubic-bezier(.2,.8,.25,1),opacity .2s;
+}
+.ai-panel.open{transform:none;opacity:1;pointer-events:auto}
+
+.ai-head{
+  background:linear-gradient(145deg,var(--ink),#241b16);
+  color:var(--cream);padding:16px 18px;display:flex;align-items:center;gap:12px;
+}
+.ai-head .av{
+  width:42px;height:42px;border-radius:50%;flex:none;
+  background:linear-gradient(145deg,var(--wood),var(--wood-deep));
+  display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;font-size:19px;
+  box-shadow:inset 0 0 0 2px rgba(247,242,234,.2);
+}
+.ai-head .who{display:grid;line-height:1.25}
+.ai-head .who b{font-family:"Fraunces",Georgia,serif;font-size:15.5px;font-weight:600}
+.ai-head .who small{font-size:11.5px;color:rgba(247,242,234,.7);display:flex;align-items:center;gap:6px}
+.ai-head .who small .live{width:7px;height:7px;border-radius:50%;background:#bff39a;box-shadow:0 0 0 0 rgba(191,243,154,.7);animation:ping 2s infinite}
+.ai-head .x{
+  margin-left:auto;background:none;border:0;color:rgba(247,242,234,.75);
+  font-size:22px;line-height:1;cursor:pointer;padding:4px 6px;border-radius:8px;transition:background .15s,color .15s;
+}
+.ai-head .x:hover{background:rgba(247,242,234,.12);color:#fff}
+
+.ai-log{
+  flex:1;overflow-y:auto;padding:18px 16px 8px;
+  display:flex;flex-direction:column;gap:12px;
+  background:
+    radial-gradient(circle at 100% 0,rgba(176,122,74,.08),transparent 45%),
+    var(--cream);
+  scroll-behavior:smooth;
+}
+.ai-msg{display:flex;gap:9px;max-width:88%;align-items:flex-end}
+.ai-msg.bot{align-self:flex-start}
+.ai-msg.me{align-self:flex-end;flex-direction:row-reverse}
+.ai-msg .bub{
+  padding:11px 14px;border-radius:16px;font-size:14.2px;line-height:1.5;
+  box-shadow:0 8px 20px -14px rgba(20,16,14,.5);
+}
+.ai-msg.bot .bub{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;color:var(--ink)}
+.ai-msg.me .bub{background:var(--ink);color:var(--cream);border-bottom-right-radius:5px}
+.ai-msg .bub a{color:var(--wood-deep);font-weight:600}
+.ai-msg.me .bub a{color:#f3c254}
+.ai-msg .mini-av{
+  flex:none;width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(145deg,var(--wood),var(--wood-deep));
+  display:grid;place-items:center;color:#fff;font-family:Georgia,serif;font-size:13px;font-weight:700;
+}
+.ai-msg.me .mini-av{background:var(--sand);color:var(--ink-soft)}
+
+.ai-typing{display:flex;gap:5px;padding:13px 15px;background:#fff;border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;width:max-content}
+.ai-typing span{width:7px;height:7px;border-radius:50%;background:var(--wood);opacity:.45;animation:ai-blink 1.2s infinite}
+.ai-typing span:nth-child(2){animation-delay:.18s}
+.ai-typing span:nth-child(3){animation-delay:.36s}
+@keyframes ai-blink{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+
+.ai-chips{display:flex;flex-wrap:wrap;gap:8px;padding:4px 16px 12px;background:var(--cream)}
+.ai-chip{
+  border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+  padding:7px 13px;border-radius:999px;font-size:12.5px;font-weight:600;cursor:pointer;
+  font-family:inherit;transition:background .15s,color .15s,border-color .15s,transform .15s;
+}
+.ai-chip:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);transform:translateY(-1px)}
+
+.ai-foot{display:flex;gap:9px;padding:12px;border-top:1px solid var(--line);background:#fff}
+.ai-foot input{
+  flex:1;border:1px solid var(--line);border-radius:999px;padding:11px 16px;font-size:14px;background:var(--cream);
+}
+.ai-foot input:focus{outline:2px solid var(--wood);outline-offset:1px}
+.ai-foot button{
+  flex:none;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--ink);color:var(--cream);display:grid;place-items:center;transition:background .15s,transform .15s;
+}
+.ai-foot button:hover{background:var(--wood-deep);transform:translateY(-1px)}
+.ai-foot button svg{width:18px;height:18px}
+.ai-disclaimer{font-size:10.5px;color:var(--ink-soft);text-align:center;padding:0 14px 10px;background:#fff;margin:0}
+
+@media(max-width:640px){
+  .ai-fab{right:14px;bottom:14px;width:56px;height:56px;max-width:calc(100vw - 28px)}
+  .ai-panel{right:12px;left:12px;bottom:80px;width:auto;max-width:calc(100vw - 24px)}
+}
